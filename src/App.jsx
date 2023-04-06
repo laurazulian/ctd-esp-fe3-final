@@ -3,16 +3,19 @@ import Navbar from "./Components/Navbar";
 import Home from "./Routes/Home";
 import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
-import Detail from "./Routes/Detail"
 import { Routes, Route } from "react-router-dom";
+import { useGlobalStates } from "./Components/utils/Context";
 
 function App() {
+
+const {themeState} = useGlobalStates()
+
   return (
-    <div className="App">
+    <div className={themeState.theme ? 'light-mode' : 'dark'}>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/dentist/:id" element={<Detail/>} />
-        <Route path="/contacto" element={<Contact/>} />
+        {/*<Route path="/dentist/:id" element={<Detail/>} />*/}
+        <Route path="/contact" element={<Contact/>} />
         <Route path="/favs" element={<Favs/>} />
       </Routes>
       <Navbar />

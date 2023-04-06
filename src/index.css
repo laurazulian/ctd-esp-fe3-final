@@ -120,3 +120,12 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+
+.ligh-mode {
+  background-color: white;
+  color: black
+}
+
+.App {
+  width : 100vw
+}
