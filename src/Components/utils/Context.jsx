@@ -59,7 +59,7 @@ const Context = ({ children }) => {
 
   return (
     <GlobalStates.Provider
-      value={{favState, favDispatch, odonto, setOdonto, themeDispatch, themeState }}
+      value={{favState, favDispatch, themeDispatch, themeState }}
     >
       {children}
     </GlobalStates.Provider>
