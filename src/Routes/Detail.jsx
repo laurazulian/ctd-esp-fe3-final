@@ -9,20 +9,22 @@ import { useState } from "react";
 const Detail = () => {
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const { id } = useParams();
-  const [odonto, setOdonto] = useState([]);
-  const { state, dispatch } = useGlobalSates();
+  const [odonto, setOdonto] = useState(null);
+  const { state} = useGlobalSates();
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(url);
-      const data = await response.json();
-      setOdonto(data);
-      console.log(data);
-    };
-    fetchData();
-  }, [url]);
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      setOdonto(data)
+    }) 
+    const o = odonto.find((dentist) =>  odonto.id === id);
+    setOdonto(o);
+  }, [id, odonto, url]);
   
+
   return (
     <div className={` ${state.theme}`}>
       <h1>Detail Dentist {id} </h1>
