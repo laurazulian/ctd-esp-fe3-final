@@ -19,7 +19,7 @@ const {themeState} = useGlobalStates()
         <Route path="/home" element={<Home />} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/favs" element={<Favs/>} />
-        <Route path="/odonto/:id" element={<Detail />} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
       <Footer />
     </div>

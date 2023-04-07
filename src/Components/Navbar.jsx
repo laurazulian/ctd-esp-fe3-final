@@ -25,7 +25,7 @@ const Navbar = () => {
 
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
 
-      <button onClick={switchTheme}>{themeState.theme ? 'Claro' : 'Oscuro'}</button>
+      <button onClick={switchTheme}>{themeState.theme ? 'Oscuro 🌕' : 'Claro ☀️'}</button>
 
       
     </nav>

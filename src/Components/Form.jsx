@@ -17,6 +17,7 @@ const Form = () => {
     const nameWithoutSpaces = user.name.trim();
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     let emailTest = emailRegex.test(user.email);
+
     if (emailTest && nameWithoutSpaces.length > 5) {
       setShow(true)
       setError(false);
@@ -39,11 +40,12 @@ const Form = () => {
           type="text"
           onChange={(e) => setUser({ ...user, surname: e.target.value })}
         />
-        <button>Enviar</button>
+        <button>Enviar Datos </button>
       </form>
 
-      {show ? (
-        <p>´Gracias ${user.name} te contactaremos cuando antes vía mail´.</p>
+      {show ? 
+      (
+        <p>Gracias ${user.name} te contactaremos cuando antes vía mail.</p>
       ) : null}
 
       {error && (

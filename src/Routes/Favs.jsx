@@ -6,17 +6,10 @@ import { useState } from "react";
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
-
-  const {state, dispatch} = useGlobalStates()
-  const {favState, setFavs} = useState([]);
-
-  useEffect(() => {
-    const favoritos = JSON.parse(localStorage.getItem("favs")) || [];
-    setFavs(favoritos);
-  }, []);
-
-
-
+  const {favState} = useGlobalStates()
+  console.log(favState)
+  const {state} = useState()
+ 
   return (
     <>
       <h1>Dentists Favs</h1>
@@ -25,12 +18,12 @@ const Favs = () => {
         {/* este componente debe consumir los destacados del localStorage */}
         {/* Deberan renderizar una Card por cada uno de ellos */}
 
-        {favState.map((odontologo) => (
+        {favState.map((odonto) => (
           <Card
-            id={odontologo.id}
-            name={odontologo.name}
-            username={odontologo.username}
-            key={odontologo.id}
+            id={odonto.id}
+            name={odonto.name}
+            username={odonto.username}
+            key={odonto.id}
           />
         ))}
 

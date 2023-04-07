@@ -14,7 +14,7 @@ const themes = {
         fontColor: 'black'
   }
 }
-
+// const initialOdontoState = []
 const initialState = themes.light
 
 const initialFavState = JSON.parse(localStorage.getItem('favs')) || []
@@ -39,16 +39,33 @@ const favReducer = (state, action) => {
   }
 }
 
-const Context = ({ children }) => {
+// const odontoReducer = (state, action) => {
+//   switch (action.type){
+//       case 'GET_ODONTO':
+//           return {odontoList: action.payload, odontoDetail: state.odotonDetail}
+//           default: 
+//           throw new Error()
+// }
+// }
 
+
+const Context = ({ children }) => {
   const [odonto, setOdonto] = useState ([])
-  const url = "https://jsonplaceholder.typicode.com/users";
+  const url = "https://jsonplaceholder.typicode.com/users" ;
   const [themeState, themeDispatch] = useReducer ( themeReducer, initialState)
   const [favState, favDispatch] = useReducer (favReducer, initialFavState)
+  console.log(favState)
 
   useEffect(() => {
     localStorage.setItem('favs', JSON.stringify (favState))
   },[favState])
+
+  // useEffect(() => {
+  //   fetch (url)
+  //   .then(res => res.json())
+  //   .then(data => odontoDispatch ({type: 'GET_ODONTO', payload: data}))
+
+  // }, [])
 
   useEffect(() => {
     fetch (url)
