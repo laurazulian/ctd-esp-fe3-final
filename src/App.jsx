@@ -14,7 +14,7 @@ const {themeState} = useGlobalStates()
     <div className={themeState.theme ? 'light-mode' : 'dark'}>
       <Routes>
         <Route path="/home" element={<Home />} />
-        {/*<Route path="/dentist/:id" element={<Detail/>} />*/}
+        {<Route path="/dentist/:id" element={<Detail/>} />}
         <Route path="/contact" element={<Contact/>} />
         <Route path="/favs" element={<Favs/>} />
       </Routes>

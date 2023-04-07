@@ -43,22 +43,23 @@ const Context = ({ children }) => {
 
   const [odonto, setOdonto] = useState ([])
   const url = "https://jsonplaceholder.typicode.com/users";
+  const [themeState, themeDispatch] = useReducer ( themeReducer, initialState)
+  const [favState, favDispatch] = useReducer (favReducer, initialFavState)
+
+  useEffect(() => {
+    localStorage.setItem('favs', JSON.stringify (favState))
+  },[favState])
 
   useEffect(() => {
     fetch (url)
     .then(res => res.json())
-    .then(data => setOdonto (data.odonto))
+    .then(data => setOdonto (data.results))
 
   }, [])
 
-
-  const [themeState, themeDispatch] = useReducer ( themeReducer, initialState)
-  const [favState, favsDispatch] = useReducer (favReducer, initialFavState)
-
-
   return (
     <GlobalStates.Provider
-      value={{favs, setFavs, odonto, setOdonto, themeDispatch, themeState }}
+      value={{favState, favDispatch, odonto, setOdonto, themeDispatch, themeState }}
     >
       {children}
     </GlobalStates.Provider>

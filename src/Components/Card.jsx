@@ -1,13 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useGlobalStates } from "./utils/Context";
 
+const Card = ({name, username, id }) => {
+  
+  const {name} = useParams()
+  const {favDispatch} = useGlobalStates();
+  const [odonto, setOdonto] = useState ({})
+  const url = 'https://jsonplaceholder.typicode.com/users' + name 
 
-const Card = ({ name, username, id }) => {
+  let favs = localStorage.getItem('favs')
 
+  useEffect(()=>{
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(setOdonto(data)))
+  },[])
+  
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
-
-    
+    localStorage.setItem('favs', JSON.stringify(favs))
+    favDispatch({type: 'ADD_FAV', payload: odonto})
   }
 
   return (
