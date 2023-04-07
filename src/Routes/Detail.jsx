@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useGlobalSates } from "../Components/utils/Context";
 import { useState } from "react";
 
-
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
@@ -17,12 +16,8 @@ const Detail = () => {
   useEffect(() => {
     fetch(url)
     .then(res => res.json())
-    .then(data => {
-      setOdonto(data)
-    }) 
-    const o = odonto.find((dentist) =>  odonto.id === id);
-    setOdonto(o);
-  }, [id, odonto, url]);
+    .then(data => {setOdonto(data)}) 
+  }, [url]);
   
 
   return (
