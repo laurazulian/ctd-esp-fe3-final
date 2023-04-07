@@ -26,7 +26,7 @@ const themeReducer = (state, action, ) => {
   case 'SWITCH_LIGHT':
       return themes.light
   default:
-      throw new Error
+      throw new Error()
   }
 }
 
@@ -35,7 +35,7 @@ const favReducer = (state, action) => {
       case 'ADD_FAV': 
           return [...state, action.payload]
       default: 
-          throw new Error
+          throw new Error()
   }
 }
 
@@ -53,13 +53,13 @@ const Context = ({ children }) => {
   useEffect(() => {
     fetch (url)
     .then(res => res.json())
-    .then(data => setOdonto (data.results))
+    .then(data => setOdonto (data))
 
   }, [])
 
   return (
     <GlobalStates.Provider
-      value={{favState, favDispatch, themeDispatch, themeState }}
+      value={{favState, favDispatch, themeDispatch, themeState, odonto, setOdonto}}
     >
       {children}
     </GlobalStates.Provider>

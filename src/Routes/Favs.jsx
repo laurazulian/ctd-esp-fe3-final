@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../Components/Card";
 import { useGlobalStates } from "../Components/utils/Context";
 import { useState } from "react";
@@ -7,20 +7,31 @@ import { useState } from "react";
 
 const Favs = () => {
 
-  const {favState} = useGlobalStates()
+  const {state, dispatch} = useGlobalStates()
+  const {favState, setFavs} = useState([]);
+
+  useEffect(() => {
+    const favoritos = JSON.parse(localStorage.getItem("favs")) || [];
+    setFavs(favoritos);
+  }, []);
+
+
 
   return (
     <>
       <h1>Dentists Favs</h1>
-      <div className="card-grid">
+      <h2 className={state.theme}>Dentists Favs</h2>
+      <div className={`card-grid ${state.theme}`}>
         {/* este componente debe consumir los destacados del localStorage */}
         {/* Deberan renderizar una Card por cada uno de ellos */}
 
-        {favState.map(odonto => (
-          <div key={odonto.id}>
-            <h2>{odonto.name}</h2>
-          </div>
-
+        {favState.map((odontologo) => (
+          <Card
+            id={odontologo.id}
+            name={odontologo.name}
+            username={odontologo.username}
+            key={odontologo.id}
+          />
         ))}
 
       </div>

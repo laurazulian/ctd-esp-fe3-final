@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const Card = ({username, id }) => {
   
   const {name} = useParams()
-  const {favDispatch} = useGlobalStates();
+  const {state, favDispatch} = useGlobalStates();
   const [odonto, setOdonto] = useState ({})
   const url = 'https://jsonplaceholder.typicode.com/users' + name 
 
@@ -19,6 +19,7 @@ const Card = ({username, id }) => {
     .then(data => console.log(setOdonto(data)))
   },[])
   
+  
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
     localStorage.setItem('favs', JSON.stringify(favs))
@@ -28,14 +29,17 @@ const Card = ({username, id }) => {
   return (
     <div className="card">
         {/* En cada card deberan mostrar en name - username y el id */}
-        <Link key={id} to={'/odonto/' + id}>
+        
         <h3>{name}</h3>
         <h3>{username}</h3>
         <h3>{id}</h3>
-        </Link>
+        <Link key={id} to={'/odonto/' + id}></Link>
         <button onClick={addFav} className="favButton">Add fav</button>
     </div>
   );
 };
 
 export default Card;
+
+
+

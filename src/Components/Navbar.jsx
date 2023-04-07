@@ -7,7 +7,6 @@ import { useGlobalStates } from './utils/Context'
 
 const Navbar = () => {
   const {themeState, themeDispatch} = useGlobalStates();
-  const navigate = useNavigate()
 
   const switchTheme = () => {
     if(themeState.theme){
@@ -20,8 +19,6 @@ const Navbar = () => {
 
     <nav>
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
-
-      <button onClick={() => navigate(-1)}>↩</button>
       <Link to="/home"><h3>Home</h3></Link>
       <Link to="/contact"><h3>Contact</h3></Link>
       <Link to="/favs"><h3>Favs</h3></Link>

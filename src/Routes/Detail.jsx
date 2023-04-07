@@ -1,19 +1,40 @@
-import React from 'react'
-import Home from './Home'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useGlobalSates } from "../Components/utils/Context";
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
+  const { id } = useParams();
+  const [odonto, setOdontolgo] = useState([]);
+  const { state, dispatch } = useGlobalSates();
  
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(url);
+      const data = await response.json();
+      setOdontolgo(data);
+      console.log(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
-      <h1>Detail Dentist id </h1>
-      <Home/>
+      <div className={` ${state.theme}`}>
+      <h1>Detail Dentist {id} </h1>
+
+      <p>name={odonto.name}</p>
+      <p>email={odonto.email}</p>
+      <p>phone={odonto.phone}</p>
+      <p>webSitw={odonto.website}</p>
+      
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+    </div>
     </>
   )
 }

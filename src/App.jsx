@@ -13,13 +13,14 @@ const {themeState} = useGlobalStates()
 
   return (
     <div className={themeState.theme ? 'light-mode' : 'dark'}>
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/favs" element={<Favs/>} />
         <Route path="/odonto/:id" element={<Detail />} />
       </Routes>
-      <Navbar />
       <Footer />
     </div>
   );
