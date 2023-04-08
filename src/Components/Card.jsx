@@ -6,11 +6,11 @@ import { useEffect } from "react";
 
 const Card = ({name, username, id }) => {
   
-  const {favDispatch} = useGlobalStates();
+  const {favDispatch, odonto, favState} = useGlobalStates();
 
-  const [dentistSelected, setDentisSelected] = useState();
+  const [dentistSelected, setDentisSelected] = useState({});
 
-  const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const url = `https://jsonplaceholder.typicode.com/users/${id}`;;
 
   useEffect(() => {
     fetch(url)
@@ -25,7 +25,7 @@ const Card = ({name, username, id }) => {
 
   return (
     <div className="card">
-        <Link  key={id} to={"/detail/" + id}>
+        <Link  key={id} to={"/dentist/" + id}>
         {/* En cada card deberan mostrar en name - username y el id */}
         <img src="./images/doctor.jpg" alt="" width={200} />
         <h3>{name}</h3>
@@ -37,7 +37,5 @@ const Card = ({name, username, id }) => {
   );
 };
 
+
 export default Card;
-
-
-
