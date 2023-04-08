@@ -19,10 +19,10 @@ const Form = () => {
     let emailTest = emailRegex.test(user.email);
 
     if (emailTest && nameWithoutSpaces.length > 5) {
-      setShow(true)
+      setShow(true);
       setError(false);
     } else {
-      setError(true)
+      setError(true);
       setShow(false);
     }
   };
@@ -43,8 +43,7 @@ const Form = () => {
         <button>Enviar Datos </button>
       </form>
 
-      {show ? 
-      (
+      {show ? (
         <p>Gracias ${user.name} te contactaremos cuando antes vía mail.</p>
       ) : null}
 

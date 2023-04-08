@@ -11,7 +11,9 @@ const Home = () => {
   // const {odontoStates} = useGlobalStates()
 
   return (
+    
     <main className="" >
+      <h1>Bienvenidos al consultorio de DH</h1>
       {/* <h1>Home</h1> */}
       <div className='card-grid'> 
       {odonto.map((item) => <Card key={item.name} id={item.id} name={item.name} username={item.username}/>)}
