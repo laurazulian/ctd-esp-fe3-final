@@ -39,16 +39,6 @@ const favReducer = (state, action) => {
   }
 }
 
-// const odontoReducer = (state, action) => {
-//   switch (action.type){
-//       case 'GET_ODONTO':
-//           return {odontoList: action.payload, odontoDetail: state.odotonDetail}
-//           default: 
-//           throw new Error()
-// }
-// }
-
-
 const Context = ({ children }) => {
   const [odonto, setOdonto] = useState ([])
   const url = "https://jsonplaceholder.typicode.com/users" ;
@@ -59,13 +49,6 @@ const Context = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('favs', JSON.stringify (favState))
   },[favState])
-
-  // useEffect(() => {
-  //   fetch (url)
-  //   .then(res => res.json())
-  //   .then(data => odontoDispatch ({type: 'GET_ODONTO', payload: data}))
-
-  // }, [])
 
   useEffect(() => {
     fetch (url)

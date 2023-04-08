@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 const Card = ({name, username, id }) => {
   
-  const {favDispatch, odonto} = useGlobalStates();
+  const {favDispatch} = useGlobalStates();
 
-  const [setDentisSelected] = useState();
+  const [dentistSelected, setDentisSelected] = useState();
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
 
@@ -20,7 +20,7 @@ const Card = ({name, username, id }) => {
 
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
-    favDispatch({type: 'ADD_FAV', payload: odonto})
+    favDispatch({type: 'ADD_FAV', payload: dentistSelected})
   }
 
   return (

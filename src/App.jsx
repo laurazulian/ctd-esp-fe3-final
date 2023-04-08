@@ -17,9 +17,9 @@ const {themeState} = useGlobalStates()
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/favs" element={<Favs/>} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/favs" element={<Favs />} />
       </Routes>
       <Footer />
     </div>
