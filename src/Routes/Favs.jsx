@@ -20,7 +20,6 @@ const Favs = () => {
             name={odonto.name}
             username={odonto.username}
             id={odonto.id}
-           
           />
         ))}
 

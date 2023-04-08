@@ -12,10 +12,6 @@ const Detail = () => {
       
   const dentistIdSelected = odonto.find((v) => paramsId.id == v.id )
 
-console.log("soy params de details")
-  console.log(paramsId)
-
-
   return (
    
 
